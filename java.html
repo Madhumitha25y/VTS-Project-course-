@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Full Stack Developer Course</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+ <!-- AOS Library for Animations -->
+ <link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #f4f4f4;
+        }
+        .course-header {
+            background-color: #28a745;
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+            transform: scale(1);
+            transition: transform 0.5s ease;
+        }
+        .course-header:hover {
+            transform: scale(1.05);
+        }
+
+        /* Navbar */
+        nav {
+            background-color: #28a745;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: white;
+            font-weight: bold;
+            padding: 15px;
+        }
+
+        nav a:hover {
+            color: #f4f4f4;
+            text-decoration: underline;
+        }
+
+        /* 3D Flip Section */
+        .section {
+            padding: 60px 0;
+            text-align: center;
+            position: relative;
+            perspective: 1000px;
+        }
+
+        .card-3d {
+            width: 300px;
+            height: 200px;
+            margin: auto;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+
+        .card-3d:hover {
+            transform: rotateY(180deg);
+        }
+
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .card-back {
+            transform: rotateY(180deg);
+            background-color: #28a745;
+            color: white;
+        }
+
+        /* Image Transform and Animation */
+        .course-image {
+            width: 100%;
+            border-radius: 10px;
+            transition: transform 0.6s ease;
+        }
+
+        .course-image:hover {
+            transform: rotate(10deg) scale(1.1);
+        }
+
+        .fade-in {
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .content-section h2 {
+            font-size: 2.5rem;
+            color: #28a745;
+            margin-bottom: 30px;
+        }
+
+        .content-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        .section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            color: #007bff;
+            margin-bottom: 30px;
+        }
+
+        /* Technical Modules Section */
+        #modules {
+            background-color: #fff;
+        }
+
+        .module {
+            margin-bottom: 40px;
+        }
+
+        /* Image Styling with Hover Effects */
+        .module img {
+            width: 100%;
+            border-radius: 15px;
+            transition: transform 0.6s ease, box-shadow 0.6s ease;
+        }
+
+        .module img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* AOS animations */
+        .fade-in {
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* Media Queries for Responsive Design */
+        @media (max-width: 768px) {
+            .module {
+                text-align: center;
+            }
+        }
+        /* feature */
+        .feature-img {
+      width: 100%;
+      height: auto;
+      transition: transform 0.5s ease;
+    }
+    .feature-img:hover {
+      transform: scale(1.1);
+    }
+    
+    /* Icon and text animation */
+    .feature-icon {
+      font-size: 50px;
+      color: #007bff;
+      transition: transform 0.3s ease;
+    }
+    .feature-icon:hover {
+      transform: scale(1.2);
+    }
+
+    /* Card hover effect */
+    .feature-card:hover {
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      transform: translateY(-5px);
+      transition: all 0.3s ease;
+    }
+    /* certification section */
+.section {
+            padding: 60px 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .section:hover {
+            transform: scale(1.02);
+            /* Slight zoom-in on hover */
+        }
+
+        h2,
+        h3 {
+            color: #4CAF50;
+            /* Green headings */
+        }
+
+        p {
+            color: #555;
+            /* Slightly lighter text */
+        }
+
+        .cert-img {
+            width: 100%;
+            max-width: 400px;
+            /* Limit image size */
+            border-radius: 10px;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .cert-img:hover {
+            transform: scale(1.1) rotate(3deg);
+            /* Enlarge and rotate image on hover */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            /* Add shadow to image */
+        }
+
+        .cert-content {
+            padding: 20px;
+            text-align: left;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .cert-content:hover {
+            transform: translateX(10px);
+            /* Slide content slightly to the right on hover */
+        }
+
+        .btn-green {
+            background-color: #4CAF50;
+            color: white;
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        .btn-green:hover {
+            background-color: #388E3C;
+            transform: translateY(-5px);
+            /* Lift button on hover */
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Java Full Stack Developer</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="#about">About Course</a></li>
+                <li class="nav-item"><a class="nav-link" href="#skills">Skills You Will Learn</a></li>
+                <li class="nav-item"><a class="nav-link" href="#modules">Technical Modules</a></li>
+                <li class="nav-item"><a class="nav-link" href="#features">Key Features</a></li>
+                <li class="nav-item"><a class="nav-link" href="#certification">Certification</a></li>
+                <li class="nav-item"><a class="nav-link" href="#why-learn">Why Learn?</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Header Section -->
+<section class="course-header">
+    <h1 class="animated-heading">Java Full Stack Developer Course</h1>
+    <p>Become a certified Java Full Stack Developer with comprehensive training</p>
+</section>
+
+<!-- About the Course -->
+<section id="about" class="section content-section">
+    <div class="container">
+        <h2>About the Course</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <img src="java.jfif" alt="Java Full Stack Course" class="course-image fade-in">
+            </div>
+            <div class="col-md-6">
+                <p>This course covers full-stack development with Java, enabling you to master both front-end and back-end technologies. You'll learn HTML, CSS, JavaScript for UI, and advanced Java, Spring Boot, RESTful APIs, and MySQL for the backend.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Skills You Will Learn -->
+<section id="skills" class="section content-section">
+    <div class="container">
+        <h2>Skills You Will Learn</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card-3d">
+                    <div class="card-front">
+                        <h4>Frontend Development</h4>
+                        <p>Master HTML, CSS, Bootstrap, and JavaScript for creating responsive websites.</p>
+                    </div>
+                    <div class="card-back">
+                        <h4>Details</h4>
+                        <p>Build dynamic and interactive UIs with React.js and other modern frameworks.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card-3d">
+                    <div class="card-front">
+                        <h4>Backend Development</h4>
+                        <p>Understand Java programming and build robust APIs with Spring Boot.</p>
+                    </div>
+                    <div class="card-back">
+                        <h4>Details</h4>
+                        <p>Implement RESTful services and integrate databases for full-stack solutions.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card-3d">
+                    <div class="card-front">
+                        <h4>Database Integration</h4>
+                        <p>Work with MySQL for database management and integration in full-stack apps.</p>
+                    </div>
+                    <div class="card-back">
+                        <h4>Details</h4>
+                        <p>Design and implement relational databases, perform CRUD operations, and optimize queries.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Technical Modules (Syllabus)
+<section id="modules" class="section content-section">
+    <div class="container">
+        <h2>Technical Modules</h2>
+        <ul>
+            <li>Introduction to Java and OOP concepts</li>
+            <li>Spring Boot for building APIs</li>
+            <li>Database Design & MySQL</li>
+            <li>Frontend Development with HTML, CSS, JS</li>
+            <li>React.js and Redux for modern web apps</li>
+            <li>Deployment and CI/CD tools</li>
+        </ul>
+    </div>
+</section> -->
+<!-- Technical Modules Section -->
+<section id="modules" class="section">
+    <div class="container">
+        <h2 data-aos="zoom-in">Technical Modules</h2>
+        <div class="row">
+            <!-- Module 1: Front-End Development -->
+            <div class="col-md-4 module" data-aos="fade-right">
+                <img src="frontend.webp" style="width:300px;height:300px;" alt="Front-End Development">
+                <h3>Module 1: Front-End Development</h3>
+                <p>Learn HTML, CSS, JavaScript, and React to build dynamic, responsive, and interactive web applications with stunning user interfaces.</p>
+            </div>
+
+            <!-- Module 2: Back-End Development -->
+            <div class="col-md-4 module" data-aos="fade-up">
+                <img src="backend.jpeg" style="width:300px;height:300px" alt="Back-End Development">
+                <h3>Module 2: Back-End Development</h3>
+                <p>Master Java, Spring Boot, and REST APIs to create scalable and secure server-side applications. Learn to handle databases and business logic.</p>
+            </div>
+
+            <!-- Module 3: Database Management -->
+            <div class="col-md-4 module" data-aos="fade-left">
+                <img src="dbms.jfif" style="width:300px;height:300px" alt="Database Management">
+                <h3>Module 3: Database Management</h3>
+                <p>Get hands-on experience with SQL and NoSQL databases like MySQL, MongoDB, and PostgreSQL. Learn how to design and optimize databases for full-stack applications.</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Module 4: DevOps and Deployment -->
+            <div class="col-md-4 module" data-aos="fade-right">
+                <img src="devops.webp" style="width:300px;height:300px" alt="DevOps and Deployment">
+                <h3>Module 4: DevOps and Deployment</h3>
+                <p>Understand CI/CD pipelines, Docker, Kubernetes, and cloud platforms like AWS. Learn to deploy full-stack applications in production environments.</p>
+            </div>
+
+            <!-- Module 5: Testing and Debugging -->
+            <div class="col-md-4 module" data-aos="fade-up">
+                <img src="debug.png" style="width:300px;height:300px" alt="Testing and Debugging">
+                <h3>Module 5: Testing and Debugging</h3>
+                <p>Learn testing frameworks like JUnit and Mockito. Master debugging and troubleshooting techniques to ensure your code is clean and reliable.</p>
+            </div>
+
+            <!-- Module 6: Capstone Project -->
+            <div class="col-md-4 module" data-aos="fade-left">
+                <img src="hands.jfif" style="width:300px;height:300px" alt="Capstone Project">
+                <h3>Module 6: Capstone Project</h3>
+                <p>Apply your knowledge in a real-world project where you’ll build a complete full-stack application from scratch, from front-end to deployment.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Key Features
+<section id="features" class="section content-section">
+    <div class="container">
+        <h2>Key Features</h2>
+        <p>Hands-on projects, real-world case studies, and industry-standard best practices.</p>
+    </div>
+</section> -->
+ <!-- Key Features Section -->
+ <div class="container mt-5">
+    <h2 class="text-center mb-4">Key Features of Our Java Full Stack Application</h2>
+    
+    <div class="row text-center">
+      <!-- Feature 1 -->
+      <div class="col-md-4 mb-4">
+        <div class="card feature-card">
+          <div class="card-body">
+            <i class="feature-icon fas fa-laptop-code"></i>
+            <img src="frontend.webp" style="width:300px;height:300px" class="feature-img mt-3 mb-3" alt="Frontend" />
+            <h5 class="card-title">Frontend Development</h5>
+            <p class="card-text">Responsive and interactive user interfaces using modern JavaScript frameworks like React and Angular.</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Feature 2 -->
+      <div class="col-md-4 mb-4">
+        <div class="card feature-card">
+          <div class="card-body">
+            <i class="feature-icon fas fa-cogs"></i>
+            <img src="backend.jpeg" class="feature-img mt-3 mb-3" style="width:300px;height:300px" alt="Backend" />
+            <h5 class="card-title">Backend Development</h5>
+            <p class="card-text">Robust and scalable backend built with Spring Boot, Hibernate, and RESTful APIs.</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Feature 3 -->
+      <div class="col-md-4 mb-4">
+        <div class="card feature-card">
+          <div class="card-body">
+            <i class="feature-icon fas fa-database"></i>
+            <img src="dbms.jfif" style="width:300px;height:300px"  class="feature-img mt-3 mb-3" alt="Database" />
+            <h5 class="card-title">Database Management</h5>
+            <p class="card-text">Seamless integration with SQL and NoSQL databases like MySQL, MongoDB for data storage.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Certification
+<section id="certification" class="section content-section">
+    <div class="container">
+        <h2>Certification</h2>
+        <p>Earn a globally recognized certificate upon successful completion of the course.</p>
+    </div>
+</section> -->
+<!-- Certification Section -->
+<section id="certification" class="section text-center">
+    <div class="container">
+        <h2>Certification</h2>
+        <div class="row align-items-center">
+            <!-- Certification Image -->
+            <div class="col-md-6">
+                <div class="cert-image">
+                    <img src="certificate.jfif" alt="Certification" class="img-fluid cert-img">
+                </div>
+            </div>
+
+            <!-- Certification Content -->
+            <div class="col-md-6">
+                <div class="cert-content">
+                    <h3>Full Stack Developer Certification</h3>
+                    <p>Upon successful completion of the Full Stack Developer course, you will receive an
+                        industry-recognized certification that demonstrates your expertise in web development,
+                        backend technologies, databases, and cloud deployment.</p>
+                    <p>This certification will boost your career prospects and help you stand out in the competitive
+                        tech industry.</p>
+                    <button class="btn btn-green">Get Your Certificate</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Why Learn Java Full Stack -->
+<section id="why-learn" class="section content-section">
+    <div class="container">
+        <h2>Why Learn Java Full Stack?</h2>
+        <p>Java Full Stack Developers are highly sought after in the tech industry, offering lucrative career opportunities. This course helps you become proficient in both front-end and back-end technologies, equipping you with the skills needed to build complete, functional web applications.</p>
+    </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 1000,  // Animation duration (ms)
+        easing: 'ease-in-out',  // Easing effect for smooth animations
+        once: true  // Animations occur only once while scrolling
+    });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

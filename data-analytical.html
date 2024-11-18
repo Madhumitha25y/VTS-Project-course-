@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Analytics Course</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+    }
+    .container {
+      padding-top: 50px;
+    }
+    
+    /* Navbar */
+    .navbar {
+      background-color: #007bff;
+    }
+    .navbar-nav .nav-link {
+      color: white !important;
+    }
+
+    /* Section Heading */
+    .section-heading {
+      font-size: 2rem;
+      color: #007bff;
+      margin-bottom: 30px;
+    }
+    /* about section */
+    /* About the Course Section */
+    #about {
+      background: linear-gradient(135deg, #00c6ff, #0072ff);
+      border-radius: 20px;
+      padding: 50px;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Section Heading */
+    .section-heading {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    /* Content Box Styling */
+    .text-content {
+      width: 50%;
+      padding-right: 40px;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      letter-spacing: 0.5px;
+      text-align: justify;
+      position: relative;
+      z-index: 2;
+    }
+
+    .text-content p {
+      opacity: 0;
+      transform: translateX(-30px);
+      animation: slideInLeft 1s forwards;
+    }
+
+    @keyframes slideInLeft {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* Image Styling with 3D Hover Effect */
+    #about img {
+      width: 45%;
+      border-radius: 15px;
+      box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      z-index: 1;
+    }
+
+    #about img:hover {
+      transform: scale(1.1) rotate(3deg);
+      box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Hover Effect on Text Content */
+    .text-content:hover {
+      color: #ffdc00;
+      transition: color 0.3s ease;
+    }
+    /* about section end */
+    /* 3D Flip Effect */
+    .flip-card {
+      /* background-color: transparent; */
+      width: 100%;
+      height: 100%;
+      perspective: 1000px;
+    }
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.6s;
+    }
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+    }
+    .flip-card-front {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 20px;
+    }
+    .flip-card-back {
+      background-color: #007bff;
+      color: white;
+      transform: rotateY(180deg);
+      padding: 20px;
+    }
+    
+    /* Hover Effects */
+    .course-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+    /* technical */
+     /* Technical Modules Section */
+     #technical-modules {
+      background: linear-gradient(135deg, #00c6ff, #0072ff);
+      padding: 60px 0;
+      color: white;
+      border-radius: 15px;
+      box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.1);
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Section Heading */
+    .section-heading {
+      font-size: 2.5rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    /* Modules Cards */
+    .module-card {
+      background-color: #ffffff;
+      color: #333;
+      border-radius: 10px;
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+    }
+
+    .module-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.2);
+    }
+
+    .module-card img {
+      width: 80%;
+      max-width: 200px;
+      transition: transform 0.3s ease;
+      margin-bottom: 20px;
+    }
+
+    .module-card img:hover {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .module-card h5 {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .module-card p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    /* Responsive Layout */
+    @media (max-width: 768px) {
+      .module-card {
+        width: 45%;
+        margin-right: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .module-card {
+        width: 100%;
+        margin-right: 0;
+      }
+    }
+
+    /* Key Features Box */
+    .feature-box {
+      background-color: #ffffff;
+      padding: 30px;
+      margin-top: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .feature-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Content Box */
+    .content-box {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      margin-bottom: 30px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .course-card {
+        margin-bottom: 20px;
+      }
+    }
+/* certification section */
+.section {
+            padding: 60px 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .section:hover {
+            transform: scale(1.02);
+            /* Slight zoom-in on hover */
+        }
+
+        h2,
+        h3 {
+            color: blue;
+            /* Green headings */
+        }
+
+        p {
+            color: #555;
+            /* Slightly lighter text */
+        }
+
+        .cert-img {
+            width: 100%;
+            max-width: 400px;
+            /* Limit image size */
+            border-radius: 10px;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .cert-img:hover {
+            transform: scale(1.1) rotate(3deg);
+            /* Enlarge and rotate image on hover */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            /* Add shadow to image */
+        }
+
+        .cert-content {
+            padding: 20px;
+            text-align: left;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .cert-content:hover {
+            transform: translateX(10px);
+            /* Slide content slightly to the right on hover */
+        }
+
+        .btn-green {
+            background-color:blue;
+            color: white;
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        .btn-green:hover {
+            background-color: blue;
+            transform: translateY(-5px);
+            /* Lift button on hover */
+        }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <a class="navbar-brand" href="#">Data Analytics Course</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#about">About Course</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills You'll Learn</a></li>
+          <li class="nav-item"><a class="nav-link" href="#modules">Technical Modules</a></li>
+          <li class="nav-item"><a class="nav-link" href="#features">Key Features</a></li>
+          <li class="nav-item"><a class="nav-link" href="#certification">Certification</a></li>
+          <li class="nav-item"><a class="nav-link" href="#why-learn">Why Learn</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container">
+    <section id="about">
+        <div class="text-content">
+          <h2 class="section-heading">About the Course</h2>
+          <p>This Data Analytics course is designed to teach you the fundamentals of data analysis, statistics, and data visualization. Throughout the course, you will work with real-world data using tools like Excel, SQL, and Python. You will learn how to clean, transform, and visualize data to uncover insights that inform decision-making. By the end, you'll be equipped to take on analytical roles in a variety of industries.</p>
+        </div>
+        <div>
+          <img src="data.jfif" style="width:400px;height:300px;"class="img-fluid" alt="Data Analytics Image">
+        </div>
+      </section>
+ <!-- Technical Modules Section -->
+ <section id="technical-modules mt-5" >
+    <h2 class="section-heading">Technical Modules</h2>
+
+    <div class="row">
+      <!-- Module 1: SQL for Data Analysis -->
+      <div class="col-md-4">
+        <div class="module-card">
+          <img src="sql.jfif" style="width: 300px;height:200px;" alt="SQL for Data Analysis">
+          <h5>SQL for Data Analysis</h5>
+          <p>Learn how to use SQL for querying databases, performing data manipulations, and extracting insights efficiently.</p>
+        </div>
+      </div>
+
+      <!-- Module 2: Data Visualization with Tableau -->
+      <div class="col-md-4">
+        <div class="module-card">
+          <img src="tableau.png"  style="width: 300px;height:200px;"  alt="Data Visualization with Tableau">
+          <h5>Data Visualization with Tableau</h5>
+          <p>Master the art of data visualization with Tableau and create interactive dashboards to communicate data insights.</p>
+        </div>
+      </div>
+
+      <!-- Module 3: Python for Data Analysis -->
+      <div class="col-md-4">
+        <div class="module-card">
+          <img src="python.jfif"  style="width: 300px;height:200px;"  alt="Python for Data Analysis">
+          <h5>Python for Data Analysis</h5>
+          <p>Learn Python programming to analyze, manipulate, and visualize data with powerful libraries like Pandas and Matplotlib.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+    <!-- Key Features Section -->
+    <section id="features">
+      <h2 class="section-heading">Key Features</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="feature-box">
+            <h5>Hands-on Projects</h5>
+            <p>Work on real-life data sets and projects to gain practical experience.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-box">
+            <h5>Expert Instructors</h5>
+            <p>Learn from industry experts who bring years of experience to the course.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-box">
+            <h5>Real-Time Analytics</h5>
+            <p>Learn how to use real-time data to make business decisions and optimize processes.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certification Section
+    <section id="certification">
+      <h2 class="section-heading">Certification</h2>
+      <div class="content-box">
+        <p>Upon successful completion of the course, you'll receive a certificate that demonstrates your expertise in data analytics. This certification will help you stand out in the job market and boost your career in the data science field.</p>
+      </div>
+    </section> -->
+ <!-- Certification Section -->
+ <section id="certification" class="section text-center">
+    <div class="container">
+        <h2>Certification</h2>
+        <div class="row align-items-center">
+            <!-- Certification Image -->
+            <div class="col-md-6">
+                <div class="cert-image">
+                    <img src="certificate.jfif" alt="Certification" class="img-fluid cert-img">
+                </div>
+            </div>
+
+            <!-- Certification Content -->
+            <div class="col-md-6">
+                <div class="cert-content">
+                    <h3>Full Stack Developer Certification</h3>
+                    <p>Upon successful completion of the Full Stack Developer course, you will receive an
+                        industry-recognized certification that demonstrates your expertise in web development,
+                        backend technologies, databases, and cloud deployment.</p>
+                    <p>This certification will boost your career prospects and help you stand out in the competitive
+                        tech industry.</p>
+                    <button class="btn btn-green">Get Your Certificate</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Why Learn Data Analytics Section -->
+    <section id="why-learn">
+      <h2 class="section-heading">Why Learn Data Analytics</h2>
+      <div class="content-box">
+        <p>Data Analytics is a key skill in today's data-driven world. With the increasing amount of data generated every day, companies are looking for professionals who can analyze and interpret data to help them make informed decisions. By learning data analytics, you open up a wide range of career opportunities and gain a competitive edge in the job market.</p>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center py-4">
+    <p>&copy; 2024 Data Analytics Course. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Bootstrap JS & Popper.js -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>
